@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .email {
+            
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            width: 300px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .email input[type="text"] {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .email input[type="text"]:focus {
+            border-color: #007bff;
+        }
+
+        .email label {
+            margin-right: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .data-table th, .data-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+        .delete-button {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <center><div class="a1 email">
+        <label for="email">Email:</label>
+        <input type="text" id="email" class="mail" readonly>
+    </div></center> 
+    <div class="a2" id="gap"></div>
+
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        const sum1 = getParameterByName('email');
+        document.getElementById('email').value = sum1;
+
+        football();
+        var spec1;
+        function football() {
+    console.log("reached method");
+
+    let doc = document.getElementById('email');
+    spec1 = doc.value;
+    console.log(spec1);
+
+    var resultArea = document.getElementById("gap");
+    resultArea.innerHTML = ''; 
+
+    fetch('http://localhost:8080/ticket/getticket', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const filteredData = data.filter(ticket => spec1 === ticket.email);
+        console.log(filteredData);
+        createTable(filteredData, resultArea);
+    })
+    .catch(error => {
+        console.log("Error ===========================");
+        console.error('Error:', error);
+        alert('An error occurred while fetching data');
+    });
+}
+
+function createTable(data, resultArea) {
+    if (data.length === 0) {
+        resultArea.innerHTML = '<p>No data found</p>';
+        return;
+    }
+
+    let table = document.createElement('table');
+    table.className = 'data-table'; 
+    let headerRow = table.insertRow();
+    Object.keys(data[0]).forEach(key => {
+        let headerCell = document.createElement('th');
+        headerCell.textContent = key;
+        headerRow.appendChild(headerCell);
+    });
+    
+    // let deleteHeaderCell = document.createElement('th');
+    // deleteHeaderCell.textContent = 'Delete';
+    // headerRow.appendChild(deleteHeaderCell);
+
+   
+    data.forEach(item => {
+        let row = table.insertRow();
+        Object.values(item).forEach(value => {
+            let cell = row.insertCell();
+            cell.textContent = value;
+        });
+        // let deleteCell = row.insertCell();
+        // let deleteButton = document.createElement('button');
+        // deleteButton.textContent = 'Delete';
+        // deleteButton.className = 'delete-button';
+        // deleteButton.onclick = function () {
+        //     delete1(item.sno);
+        //     console.log('Deleting...');
+        //     alert("Ticket cancelled Successfully")
+        // };
+        // deleteCell.appendChild(deleteButton);
+    });
+    resultArea.appendChild(table);
+}
+
+function delete1(sno) {
+    fetch(`http://localhost:8080/ticket/deletebook/${sno}`, {
+        method: 'DELETE'
+    })
+    .then(() => {
+        console.log("enter");
+        football(); 
+    })
+    .catch(error => {
+        console.error('Error deleting appointment:', error);
+    });
+}
+
+    </script>
+</body>
+
+</html>

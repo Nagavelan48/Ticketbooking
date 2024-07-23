@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Ticket Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        select,
+        input[type="date"],
+        input[type="text"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            max-height: 200px;
+            overflow-y: auto;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .dropdown-content label {
+            display: block;
+            padding: 8px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dropdown-content label:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .selected-seats {
+            margin-top: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Bus Ticket Booking Form</h2>
+    <div class="container">
+        <form id="bookingForm">
+            <label for="busId">Bus ID:</label>
+            <select id="busId" name="busId" required>
+                <option hidden disabled selected>Choose the BusId</option>
+                <option value="111">111</option>
+                <option value="222">222</option>
+                <option value="333">333</option>
+            </select>
+
+            <label for="date">Date:</label>
+            <select id="date11" name="from" required>
+                <option hidden disabled selected>Choose Date</option>
+            </select>
+
+            <label for="from">From:</label>
+            <select id="from1" name="from" required>
+                <option hidden disabled selected>Choose start location</option>
+                <option value="Rajapalayam">Rajapalayam</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Coimbatore">Coimbatore</option>
+            </select>
+
+            <label for="to">To:</label>
+            <select id="to1" name="to" required>
+                <option hidden disabled selected>Choose start location</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Rajapalayam">Rajapalayam</option>
+                <option value="Coimbatore">Coimbatore</option>
+            </select>
+
+            <label for="seatNumbers">Seat Numbers:</label>
+            <div class="dropdown">
+                <button type="button" onclick="toggleDropdown()" >Select Seats</button>
+                <div class="dropdown-content" id="seatNumbers">
+                    <label class="select-all"><input type="checkbox" id="selectAll"> Select All</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="2A"> Seat 2A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="3A"> Seat 3A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="4A"> Seat 4A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="5W"> Seat 5W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="6W"> Seat 6W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="7A"> Seat 7A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="8A"> Seat 8A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="9A"> Seat 9A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="10W"> Seat 10W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="11W"> Seat 11W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="12A"> Seat 12A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="13A"> Seat 13A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="14A"> Seat 14A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="15W"> Seat 15W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="16W"> Seat 16W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="17A"> Seat 17A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="18A"> Seat 18A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="19A"> Seat 19A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="20W"> Seat 20W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="21W"> Seat 21W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="22A"> Seat 22A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="23A"> Seat 23A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="24A"> Seat 24A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="25W"> Seat 25W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="26W"> Seat 26W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="27A"> Seat 27A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="28A"> Seat 28A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="29A"> Seat 29A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="30W"> Seat 30W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="31W"> Seat 31W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="32A"> Seat 32A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="33A"> Seat 33A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="34A"> Seat 34A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="35W"> Seat 35W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="36W"> Seat 36W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="37A"> Seat 37A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="38A"> Seat 38A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="39A"> Seat 39A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="40W"> Seat 40W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="41W"> Seat 41W</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="42A"> Seat 42A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="43A"> Seat 43A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="44A"> Seat 44A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="45A"> Seat 45A</label>
+                    <label><input type="checkbox" class="seatCheckbox" value="46W"> Seat 46W</label>
+                </div>
+            </div>
+
+            <input type="text" id="booked" name="booked" value="0" hidden>
+
+            <button type="submit" id="submit">Submit</button>
+        </form>
+
+        <div class="selected-seats" id="selectedSeats"></div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            let dropdownContent = document.getElementById('seatNumbers');
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        }
+
+        document.getElementById('selectAll').addEventListener('change', function () {
+            let checkboxes = document.querySelectorAll('.seatCheckbox');
+            for (let checkbox of checkboxes) {
+                checkbox.checked = this.checked;
+            }
+            displaySelectedSeats();
+        });
+
+        document.querySelectorAll('.seatCheckbox').forEach(checkbox => {
+            checkbox.addEventListener('change', displaySelectedSeats);
+        });
+
+        function displaySelectedSeats() {
+            let selectedSeats = [];
+            document.querySelectorAll('.seatCheckbox:checked').forEach(checkbox => {
+                selectedSeats.push(checkbox.value);
+            });
+            document.getElementById('selectedSeats').innerText = 'Selected Seats: ' + selectedSeats.join(', ');
+        }
+
+        document.getElementById('bookingForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            document.getElementById('submit').disabled = true;
+            slot();
+        });
+
+        function slot() {
+            var busId = document.getElementById('busId').value;
+            var date11 = document.getElementById('date11').value;
+            var from1 = document.getElementById('from1').value;
+            var to1 = document.getElementById('to1').value;
+
+            var seatnumbers = [];
+            document.querySelectorAll('.seatCheckbox:checked').forEach((checkbox) => {
+                seatnumbers.push(checkbox.value);
+            });
+
+            var booked = document.getElementById('booked').value;
+
+            seatnumbers.forEach((seatnumber) => {
+                var details = {
+                    busId: busId,
+                    date11: date11,
+                    from1: from1,
+                    to1: to1,
+                    seatnumbers: seatnumber,
+                    booked: booked
+                };
+
+                console.log('Payload being sent:', details);
+
+                fetch('http://localhost:8080/slot/book', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(details),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.text().then(text => { throw new Error(text); });
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        console.log('Response:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error.message);
+                        alert('An error occurred while booking the slot');
+                    });
+            });
+        }
+
+
+
+
+
+        function getFormattedDate(date) {
+            const year = date.getFullYear();
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const day = date.getDate().toString().padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // Get today's date
+        let currentDate = new Date();
+
+        // Reference to the select element
+        const dateSelect = document.getElementById('date11');
+
+        // Loop to generate six dates starting from today
+        for (let i = 0; i < 6; i++) {
+            // Create a new option element
+            const option = document.createElement('option');
+            // Get the formatted date
+            const dateStr = getFormattedDate(currentDate);
+            // Set the option value and text
+            option.value = dateStr;
+            option.textContent = dateStr;
+            // Append the option to the select element
+            dateSelect.appendChild(option);
+            // Increment the date by one day
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+    </script>
+</body>
+
+</html>

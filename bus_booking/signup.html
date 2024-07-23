@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title> SignUP></title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body{
+        overflow: hidden;
+    }
+    .whole{
+        width:100%;
+        height:728px;
+        overflow:hidden;
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    }
+    section{
+        width:95%;
+        height:510px;
+        margin-left:180px;
+        margin-top:50px;
+    }
+    .article1 {
+        width: 40%;
+        height: 510px;
+        float:left;
+        border-radius: 15px 0px 0px 15px;
+        backdrop-filter: blur(10px); 
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    img{
+        border-radius: 15px 0px 0px 15px;
+        margin-bottom:510px;
+    }
+    .article2 {
+        width: 40%;
+        height:510px;
+        border-radius: 0px 15px 15px 0px;
+        display: inline-block;
+        background-color: rgba(255, 255, 255, 0.5);
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .article2 h2{
+        text-align:center;
+       
+        font-size:30px;
+        margin-top:60px;
+        margin-bottom:23px;
+        font-weight:bold;
+    }
+    
+    .article2 input {
+        border: none;
+        border-bottom: 1px solid grey;
+        background-color: transparent;
+        margin:20px 40px;
+        width: 80%; 
+        padding: 5px 0px;
+        box-sizing: border-box; 
+        font-size:18px;
+    }
+    input:focus{
+        outline:none;
+        border-bottom:1px solid black;
+    }
+    .button{
+        background-color:#94bbe9;
+        border:none;
+        margin:10px 40px;
+        width: 80%; 
+        padding: 5px 0px;
+        border-radius:5px;
+        height:40px;
+    }
+    .article2 a{
+        text-decoration:none;
+        font-size: 20px;
+    } 
+    p{
+        margin:30px 40px;
+        padding: 5px 0px;
+        display:inline-block;
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+    <div class="whole">
+        <section>
+            <article class="article1">
+                <img src="bus1.jpg"  width="100%" height="510px">
+            </article>
+            <article class="article2">
+                <h2>Signup</h2>
+                
+                    <input type="text" name="username" id="user" placeholder="Username" required>
+                    <input type="password" name=" New password" id="pass" placeholder="New Password" required>
+                    <input type="text" name="EmailId" id="email" placeholder="Email" required>
+                    <button class="button" id="save" onclick="signup()" style="font-size:20px">Signup</button>
+                    <div id="result" style="text-align: center;">
+                    </div>
+                    
+                    <p>Already had an account?       <a  href="login1.html" id="loginBtn">Login</a></p><br>
+                
+               
+            </article>
+        </section>
+    </div>
+</div>
+<script>
+        
+    function signup() {
+            
+        console.log("function calling....")
+        var name = document.getElementById("user").value;
+        var pass = document.getElementById("pass").value;
+        var email = document.getElementById("email").value;
+        
+        var logging = {
+           name: name,
+           mail: email,
+           pass: pass
+        }
+
+        console.log(logging);
+
+        fetch('http://localhost:8080/signup/sign', {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(logging),
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            var res = document.getElementById('result');
+            res.innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while logging in');
+        });
+    }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bus Ticket Booking</title>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgb(18,162,237);
+background: linear-gradient(90deg, rgba(18,162,237,1) 9%, rgba(181,74,177,0.9808298319327731) 58%, rgba(52,192,255,1) 83%);
+}
+
+.container {
+  background-color: #89ABE3;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+ 
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#passengerList {
+  margin-top: 10px;
+}
+
+.passenger {
+  margin-bottom: 5px;
+}
+
+.passenger label {
+  font-weight: bold;
+}
+
+.passenger input[type="text"] {
+  padding: 5px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.passenger input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>Payment</h2>
+      <label for="busid">Bus ID:</label>
+      <input type="text" id="busid" name="busid" required readonly>
+      <label for="amount">Amount:</label>
+      <input type="text" id="amount" name="amount" required readonly>
+      TotalPassengers<input type="text" id="totalPassengers" name="totalPassengers" readonly >
+      <div id="passengerList">
+      <label for="total">Total:</label>
+      <input type="text" id="total" name="total" readonly >
+
+      <label for="name">Username:</label>
+      <input type="text" id="usname" name="uname" readonly>
+
+      <label for="date">Date:</label>
+      <input type="text" id="date2" name="uname" readonly>
+      <div class="container">
+       
+        <div class="progress" style="height:20px;">
+            <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div><br>
+        
+    </div>
+      </div>
+      <button type="submit" id="submit" onclick='handleClick()'>Submit</button>
+  </div>
+  <script>
+
+
+    function handleClick() {
+        var progressBar = document.getElementById('progress-bar');
+        var initialText = progressBar.innerHTML; 
+        var width = 0;
+        var interval = setInterval(function() {
+            if (width >= 100) {
+                clearInterval(interval);
+                alert('Successfully paid');
+                let count = document.getElementById("busid").value;
+                let count1 = document.getElementById("date2").value;
+                let count2 = document.getElementById("usname").value;
+                let count3 = document.getElementById("total").value;
+                let destinationURL = "ticket.html?busid=" + encodeURIComponent(count) + "&date=" + encodeURIComponent(count1) + "&username=" +encodeURIComponent(count2) + "&total=" +encodeURIComponent(count3);
+                console.log("Destination URL:", destinationURL);
+                window.location.href = destinationURL; 
+            } else {
+                width++;
+                progressBar.style.width = width + '%';
+                progressBar.setAttribute('aria-valuenow', width);
+                progressBar.innerHTML = initialText + ' ' + width + '%'; 
+            }
+        }, 100); 
+    }
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+let  pass = parseInt(getParameterByName('busid'), 10); 
+document.getElementById('busid').value = pass;
+
+let pass1 = parseInt(getParameterByName('noofseats'), 10);
+document.getElementById('totalPassengers').value = pass1;  
+
+const sum =   (getParameterByName('date'));
+console.log(sum)
+document.getElementById('date2').value = sum;
+
+const sum1 = getParameterByName('uname');
+document.getElementById('usname').value = sum1;
+
+let count
+let hidden ;
+
+let doc1 = document.getElementById('busid');
+let y=doc1.value;
+
+  if(y)
+  {
+    function f(y) {
+    let spec2 = y;
+    fetchData(spec2);
+
+function fetchData(spec2) {
+    fetch('http://localhost:8080/addbus/getAdduser', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        data.forEach(Addbus => {
+            if (Addbus.id == spec2) {
+               
+                 hidden = document.getElementById('amount');
+                hidden.value = Addbus.amount;
+                count=Addbus.amount
+                let total=count * pass1
+                document.getElementById('total').value=total
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+}
+
+}
+f(y)
+
+ 
+  
+}
+  else
+  {
+    console.log(doc1.value)
+    console.log("uyf")
+  }
+ 
+
+
+  </script>
+</body>
+</html>

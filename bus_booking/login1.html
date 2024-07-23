@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .whole {
+            width: 100%;
+            height: 728px;
+            overflow: hidden;
+            background: rgb(238, 174, 202);
+            background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+        }
+
+        section {
+            width: 95%;
+            height: 510px;
+            margin-left: 180px;
+            margin-top: 50px;
+        }
+
+        .article1 {
+            width: 40%;
+            height: 510px;
+            float: left;
+            border-radius: 15px 0px 0px 15px;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        img {
+            border-radius: 15px 0px 0px 15px;
+            margin-bottom: 510px;
+        }
+
+        .article2 {
+            width: 40%;
+            height: 510px;
+            border-radius: 0px 15px 15px 0px;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.5);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .article2 h2 {
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 23px;
+            font-weight: bold;
+        }
+
+        .article2 input {
+            border: none;
+            border-bottom: 1px solid grey;
+            background-color: transparent;
+            margin: 30px 40px;
+            width: 80%;
+            padding: 5px 0px;
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+
+        input:focus {
+            outline: none;
+            border-bottom: 1px solid black;
+        }
+
+        .button {
+            background-color: #94bbe9;
+            border: none;
+            margin: 10px 40px;
+            width: 80%;
+            padding: 5px 0px;
+            border-radius: 5px;
+            height: 40px;
+            font-size: 25px;
+        }
+
+        .article2 a {
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 30px 40px;
+            padding: 5px 0px;
+            display: inline-block;
+            font-size: 20px;
+        }
+
+        .forget {
+            margin-bottom: 170px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="whole">
+        <section>
+            <article class="article1">
+                <img src="bus1.jpg" width="100%" height="510px">
+            </article>
+            <article class="article2">
+                <h2>Login</h2>
+                <input type="text" name="email" id="user" placeholder="Email">
+                <input type="password" name="password" id="pass" placeholder="Password">
+                <input type="hidden" id="hidden" hidden>
+                <button class="button" id="save" onclick="login()">Submit</button>
+                <p>Don't have an account? <a href="signup.html" id="signupBtn">Signup</a></p>
+                <!-- 
+                    
+                 -->
+            </article>
+        </section>
+    </div>
+
+    <script>
+        function login() {
+            let name = document.getElementById("user").value;
+            let pass = document.getElementById("pass").value;
+            console.log("login")
+            console.log(name)
+
+            let logging = {
+                email: name,
+                password: pass
+            };
+            if (name === 'admin1@gmail.com' && pass === 'admin123') {
+                window.location.href = 'menu.html'; 
+            }
+            else {
+                fetch('http://localhost:8080/Login/Login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(logging),
+                })
+                    .then(response => response.text())
+                    .then(data => {
+
+                        if (data === 'Valid Person') {
+                            var countValue = document.getElementById("hidden").value;
+                            var countValue2 = document.getElementById("user").value;
+                            var destinationURL = "user.html?hidden=" + countValue + "&email=" + countValue2;
+                            window.location.href = destinationURL;
+                        }
+                        else {
+                            alert('Incorrect Password or User does not exist');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while logging in');
+                    });
+            }
+        }
+
+        document.getElementById('user').addEventListener('change', function () {
+            var spec = this.value;
+
+            fetch('http://localhost:8080/signup/getSignUpLog', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(res => res.json())
+                .then(data => {
+                    data.forEach(SignUp => {
+                        if (SignUp.mail === spec) {
+                            alert(SignUp.name);
+                            let hidden = document.getElementById('hidden');
+                            hidden.value = SignUp.name;
+                        }
+                    });
+                });
+        });
+    </script>
+</body>
+
+</html>

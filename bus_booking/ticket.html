@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Details</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .details-container {
+        max-width: 800px;
+        margin: 0 auto;
+        display: none;
+    }
+
+    .detail {
+        margin-bottom: 20px;
+    }
+
+    .detail label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .detail input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .detail p {
+        margin: 5px 0;
+    }
+
+    .passenger-list {
+        margin-top: 10px;
+    }
+
+    .passenger-list ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .passenger-list li {
+        margin-bottom: 5px;
+    }
+    
+    #show-details-btn {
+        display: block;
+        margin: 0 auto 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #feed {
+        display: block;
+        margin: 0 auto 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #gen-details-btn {
+        display: block;
+        margin: 0 auto 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <button id="show-details-btn" onclick="showDetails()">Show Booking Details</button>
+    <button id="feed" >Feedback</button>
+    <h1>Booking Details</h1>
+    <div class="details-container" id="booking-details">
+        <div class="detail">
+            <label>Bus ID:</label>
+            <input type="text" id="bus-id" readonly>
+        </div>
+        
+       
+        <div class="detail">
+            <label>Seat Number:</label>
+            <input type="text" id="seat-number" readonly>
+        </div>
+        
+        <div class="detail">
+            <label>Passenger List:</label>
+            <div class="passenger-list">
+               <input type="text" id="pl" readonly>
+            </div>
+        </div>
+        <div class="detail">
+            <label>Start Time:</label>
+            <input type="text" id="start-time" readonly>
+        </div>
+        <div class="detail">
+            <label>End Time:</label>
+            <input type="text" id="end-time" readonly>
+        </div>
+        <div class="detail">
+            <label>Start Point:</label>
+            <input type="text" id="start-point" readonly>
+        </div>
+        <div class="detail">
+            <label>End Point:</label>
+            <input type="text" id="end-point" readonly>
+        </div>
+        <div class="detail">
+            <label>Amount:</label>
+            <input type="text" id="amount" readonly>
+        </div>
+        <div class="detail">
+            <label>Date:</label>
+            <input type="text" id="date3" readonly>
+        </div>
+        <div class="detail">
+            <label>Total Passengers:</label>
+            <input type="text" id="total-passengers" readonly>
+        </div>
+        <div class="detail">
+            <label>Username:</label>
+            <input type="text" id="username" readonly>
+        </div>
+       
+        <div class="detail">
+            <label>Mobile Number:</label>
+            <input type="text" id="mobile-number" readonly>
+        </div>
+        <div class="detail">
+            <label>Email Address:</label>
+            <input type="text" id="email" readonly>
+        </div>
+        <button id="gen-details-btn" onclick="finish()">Finish</button>
+    </div>
+
+    <script>
+
+            document.getElementById("feed").addEventListener("click", function() {
+            window.location.href = "feedback.html";
+            });
+
+
+    function finish(){
+    
+            var bus = document.getElementById('bus-id').value;
+            var sn = document.getElementById('seat-number').value;
+            console.log(sn);
+            var pl = document.getElementById('pl').value;
+            var st = document.getElementById('start-time').value;
+            var et = document.getElementById('end-time').value;
+            var sp = document.getElementById('start-point').value;
+            var ep = document.getElementById('end-point').value;
+            var amount = document.getElementById('amount').value;
+            var date3 = document.getElementById('date3').value;
+            var tp = document.getElementById('total-passengers').value;
+            var username = document.getElementById('username').value;
+            var mn = document.getElementById('mobile-number').value;
+            var email = document.getElementById('email').value;
+
+
+            var ticket = {
+                bus: bus,
+                sn: sn,
+                pl: pl,
+                st: st,
+                et: et,
+                sp: sp,
+                ep: ep,
+                amount: amount,
+                date3: date3,
+                tp: tp,
+                username: username,
+                mn: mn,
+                email: email
+            }
+
+            fetch('http://localhost:8080/ticket/tickets', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ticket),
+    })
+     .then(response => response.text())
+     .then(data => {
+        if (data === 'Success') {
+            alert("finished Successfully");
+        } else {
+            console.error('Data is not "Success".');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+   }
+        function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+            
+   function showDetails() {
+
+
+            let usersname =[]
+            let ticket=[];
+            var detailsContainer = document.getElementById("booking-details");
+            detailsContainer.style.display = "block";
+
+            let a = parseInt(getParameterByName('busid'), 10);
+            document.getElementById('bus-id').value = a;
+
+            let a1 = getParameterByName('date');
+            console.log(typeof(a1));
+            document.getElementById('date3').value = a1;
+
+            let a2 = parseInt(getParameterByName('total'), 10);
+            document.getElementById('amount').value = a2;
+
+            let a3 = getParameterByName('username');
+            document.getElementById('username').value = a3;
+
+            console.log("reached method");
+
+            let doc = document.getElementById('date3');
+            let spec1 = doc.value;
+
+            let doc2 = document.getElementById('bus-id');
+            let spec3 = doc2.value;
+
+            let doc3 = document.getElementById('username');
+            let spec4 = doc3.value;
+
+            fetch('http://localhost:8080/details/getdetail', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                
+                console.log(data,"ff")
+                
+            data.forEach(Details => {
+                console.log(Details.uname);
+                if(spec4==Details.uname)
+                {
+                    console.log("ok")
+                }
+
+                console.log(spec1 ,"spec1 ")
+                console.log(spec3 ,"spec3 ")
+                console.log(spec4 ,"spec4")
+                
+                if (spec1 == Details.date1 && spec3 == Details.inputBox && spec4 == Details.uname) {
+
+                    
+                    console.log("hiii ",Details)
+                    
+                    let hidden=document.getElementById('seat-number');
+                    ticket.push(Details.sn)
+                    hidden.value= ticket.join(", ");
+
+                    let hidden1=document.getElementById('pl');
+                    usersname.push(Details.passengers)
+
+                    var concatenatedString = usersname.join(", ");
+
+                    hidden1.value= concatenatedString;
+                    
+
+                    let hidden2=document.getElementById('start-time');
+                    hidden2.value= Details.st;
+
+                    let hidden3=document.getElementById('end-time');
+                    hidden3.value= Details.et;
+
+                    let hidden4=document.getElementById('start-point');
+                    hidden4.value= Details.pickup;
+
+                    let hidden5=document.getElementById('end-point');
+                    hidden5.value= Details.drop1;
+
+                    let hidden7=document.getElementById('total-passengers');
+                    hidden7.value= Details.sumTextField;
+                    
+
+                    let hidden8=document.getElementById('mobile-number');
+                    hidden8.value= Details.mn;
+                
+
+                    let hidden9=document.getElementById('email');
+                    hidden9.value= Details.eid;
+                    
+                    
+                }
+            });
+
+            var table = document.getElementById("username");
+        })
+
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+
+            
+        }
+
+    </script>
+</body>
+</html>

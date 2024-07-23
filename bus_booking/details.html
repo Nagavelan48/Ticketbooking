@@ -1,0 +1,911 @@
+<html>
+
+<head>
+    <title>
+        User Details
+    </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .passen {
+            background-color: blue;
+            color: white;
+        }
+
+        section {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            margin-top: 10px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .article1,
+        .article2 {
+            width: 48%;
+            height: 500px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        .article1 {
+            margin-right: 10px;
+            background-color: white;
+        }
+
+        .article2 {
+            margin-left: 10px;
+        }
+
+        .legend {
+            margin: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .legend-item {
+            display: inline-block;
+            margin-right: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .legend-color-box {
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            margin-right: 5px;
+            border: 1px solid #999;
+            border-radius: 3px;
+        }
+
+        .red {
+            background-color: #ff6b6b;
+        }
+
+        .violet {
+            background-color: violet;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .white {
+            background-color: #fff;
+            border: 1px solid #999;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .pay {
+            background-color: #6ab04c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 12px;
+
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+        }
+
+        .pay1 {
+            position: relative;
+            left: 142px;
+
+        }
+
+        .small {
+            font-size: 12px;
+            border: 1px black solid;
+        }
+
+        .rectangle {
+            margin: -10px 180px;
+            width: 235px;
+            height: 480px;
+            background-color: F1F1F2;
+            border-radius: 5px;
+        }
+
+        .pay:hover {
+            background-color: #4f7c2a;
+        }
+
+        .input11-width,
+        .input2-width {
+            width: 50px;
+            background-color: #e0f0ff;
+        }
+
+        .input1-width {
+            width: 250px;
+            background-color: #e0f0ff;
+        }
+
+        .gap {
+            background-color: white'' '
+
+        }
+
+        .btndiv {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            margin-top: 10px;
+
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="legend">
+        <div class="legend-item ">
+            <div class="legend-color-box red"></div>Conductor Seat
+        </div>
+        <div class="legend-item">
+            <div class="legend-color-box violet"></div>Handicapped Seat
+        </div>
+        <div class="legend-item">
+            <div class="legend-color-box yellow"></div>Women Seat
+        </div>
+        <div class="legend-item">
+            <div class="legend-color-box white"></div>General Seat
+        </div>
+        <!-- <div class="legend-item">
+            <div class="legend-color-box pink"></div>Booked Women Seat
+        </div> -->
+        <div class="legend-item">
+            <div class="legend-color-box blue"></div>Booked General Seat
+        </div>
+        <!-- <div class="legend-item">
+            <div class="legend-color-box green"></div>Booked Handicapped Seat
+        </div> -->
+    </div>
+    <section class="gap">
+
+
+        <article class="article1">
+            <div class="rectangle">
+                <table cellpadding="6">
+                    <h5 style="margin-left:140px;">Driver Seat</h5>
+                    <tr>
+                        <td class="small myCheckbox" style="background-color: red">
+                            <div>1W</div>
+                        </td>
+                        <td class="small myCheckbox"><input type="checkbox" style="transform: scale(0.8);" id="2A"
+                                name="2A">
+                            <div>2A</div>
+                        </td>
+                        <td></td>
+                        <td class="small myCheckbox" style="background-color: violet;"><input type="checkbox"
+                                style="transform: scale(0.8);" id="3A" name="3A">
+                            <div>3A</div>
+                        </td>
+                        <td class="small myCheckbox" style="background-color: violet;"><input type="checkbox"
+                                style="transform: scale(0.8);" id="4A" name="4A">
+                            <div>4A</div>
+                        </td>
+                        <td class="small myCheckbox" style="background-color: violet;"><input type="checkbox"
+                                style="transform: scale(0.8);" id="5W" name="5W">
+                            <div>5W</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="6W" name="6W">
+                            <div>6W</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="7A" name="7A">
+                            <div>7A</div>
+                        </td>
+                        <td></td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="8A" name="8A">
+                            <div>8A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="9A" name="9A">
+                            <div>9A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="10W" name="10W">
+                            <div>10W</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="11W" name="11W">
+                            <div>11W</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="12A" name="12A">
+                            <div>12A</div>
+                        </td>
+                        <td></td>
+                        <td class="small" style="background-color: yellow;"><input type="checkbox"
+                                style="transform: scale(0.8);" id="13A" name="13A">
+                            <div>13A</div>
+                        </td>
+                        <td class="small" style="background-color: yellow;"><input type="checkbox"
+                                style="transform: scale(0.8);" id="14A" name="14A">
+                            <div>14A</div>
+                        </td>
+                        <td class="small" style="background-color: yellow;"><input type="checkbox"
+                                style="transform: scale(0.8);" id="15W" name="15W">
+                            <div>15W</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="16W" name="16W">
+                            <div>16W</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="17A" name="17A">
+                            <div>17A</div>
+                        </td>
+                        <td></td>
+                        <td class="small" style="background-color: yellow;"><input type="checkbox"
+                                style="transform: scale(0.8);" id="18A" name="18A">
+                            <div>18A</div>
+                        </td>
+                        <td class="small" style="background-color: yellow;"><input type="checkbox"
+                                style="transform: scale(0.8);" id="19A" name="19A">
+                            <div>19A</div>
+                        </td>
+                        <td class="small" style="background-color: yellow;"><input type="checkbox"
+                                style="transform: scale(0.8);" id="20W" name="20W">
+                            <div>20W</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="21W" name="21W">
+                            <div>21W</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="22A" name="22A">
+                            <div>22A</div>
+                        </td>
+                        <td></td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="23A" name="23A">
+                            <div>23A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="24A" name="24A">
+                            <div>24A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="25W" name="25W">
+                            <div>25W</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="26W" name="26W">
+                            <div>26W</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="27A" name="27A">
+                            <div>27A</div>
+                        </td>
+                        <td></td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="28A" name="28A">
+                            <div>28A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="29A" name="29A">
+                            <div>29A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="30W" name="30W">
+                            <div>30W</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="31W" name="31W">
+                            <div>31W</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="32A" name="32A">
+                            <div>32A</div>
+                        </td>
+                        <td></td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="33A" name="33A">
+                            <div>33A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="34A" name="34A">
+                            <diV>34A</diV>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="35W" name="35W">
+                            <div>35W</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="36W" name="36W">
+                            <div>36W</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="37A" name="37A">
+                            <div>37A</div>
+                        </td>
+                        <td></td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="38A" name="38A">
+                            <div>38A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="39A" name="39A">
+                            <div>39A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="40W" name="40W">
+                            <div>40W</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="41W" name="41W">
+                            <div>41W</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="42A" name="42A">
+                            <div>42A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="43A" name="43A">
+                            <div>43A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="44A" name="44A">
+                            <div>44A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="45A" namme="45A">
+                            <div>45A</div>
+                        </td>
+                        <td class="small"><input type="checkbox" style="transform: scale(0.8);" id="46W" name="46W">
+                            <div>46W</div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </article>
+        <article class="article2">
+            <div class="passen">Passenger Details</div>
+
+            <table style="width:574px; border:1px solid black">
+                <tr>
+                    <td style="width:287px;background-color: #add8e6;">
+
+                        <input box="text" id="date1" style="width:117px" readonly hidden>
+                        <table>
+                            <tr>
+                                <td style="width:143px;">Pickup Point</td>
+                                <td style="width:143px"><input type="text" style="width:143px; border-radius:3px;"
+                                        id="pickup" readonly></td>
+                            </tr>
+                            <tr>
+                                <td style="width:143px">Start Time</td>
+                                <td style="width:143px"><input type="text" style="width:143px; border-radius:3px;"
+                                        id="st" readonly></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:287px;background-color: #add8e6;">
+                        <input box="text" id="uname" tyle="width:117px" hidden>
+                        <table>
+                            <tr>
+                                <td style="width:143px">Drop Point</td>
+                                <td style="width:143px"><input type="text" style="width:143px; border-radius:3px;"
+                                        id="drop1" readonly></td>
+                            </tr>
+                            <tr>
+                                <td style="width:143px">End Time</td>
+                                <td style="width:143px"><input type="text" style="width:143px; border-radius:3px;"
+                                        id="et" readonly></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:287px ; background-color: #add8e6;">
+                        <table>
+                            <tr>
+                                <td style="width:143px">BusId</td>
+                                <td style="width:143px"><input type="text" style="width:143px;  border-radius:3px;"
+                                        id="inputBox" readonly></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:287px ;  background-color: #add8e6;">
+                        <table>
+                            <tr>
+                                <td style="width:143px">No. of Seats</td>
+                                <td style="width:143px"><input type="text" style="width:143px;  border-radius:3px;"
+                                        id="sumTextField" readonly></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table style="margin-top: 20px; width: 100%;" id="myTable">
+                <thead>
+                    <tr>
+                        <th style="width:50px ; background-color: #add8e6;" id="sn" required>Seat No</th>
+                        <th style="width:250px ; background-color: #add8e6;" id="passengers" required>Passengers</th>
+                        <th style="width:50px ; background-color: #add8e6;" id="age" required>Age</th>
+                        <th style="width:200px;  background-color: #add8e6;" id="gen" required>Gender</th>
+                    </tr>
+                    <tr></tr>
+
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <table style="margin-top:20px;">
+                <tr>
+                    <td style="width:50%; background-color: #add8e6;">Aadhar Card</td>
+
+                    <td style="width:50%;"><input type="text" style="width:280px; background-color: #e0f0ff;" id="ac" required>
+                    </td>
+                </tr>
+            </table>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width:25%;background-color: #add8e6;">Mobile No</td>
+                    <td style="width:25%;"><input type="text" style="background-color: #e0f0ff;" id="mn" required></td>
+                    <td style="width:25%; background-color: #add8e6;">Email ID</td>
+                    <td style="width:25%;"><input type="text" style="background-color: #e0f0ff;" id="eid" required></td>
+                </tr>
+            </table>
+            <div class="btndiv">
+                <button class="pay" id="pay" onclick="details1()">Go Back</button>
+
+                <button class="pay pay1" id="pay" onclick="details()">Proceed to pay</button>
+            </div>
+        </article>
+
+    </section>
+
+
+    <script>
+
+        function details1() {
+            window.location.href = 'user.html';
+        }
+
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+
+        const sum = getParameterByName('count');
+        document.getElementById('sumTextField').value = sum;
+
+        const sum1 = getParameterByName('from');
+        document.getElementById('pickup').value = sum1;
+
+        const sum2 = getParameterByName('to');
+        document.getElementById('drop1').value = sum2;
+
+        const sum3 = getParameterByName('ondate');
+        document.getElementById('date1').value = sum3;
+
+        const sum4 = getParameterByName('username');
+        document.getElementById('uname').value = sum4;
+        let rowCount;
+        function addRows() {
+            var rowCountInput = document.getElementById("sumTextField");
+            rowCount = parseInt(rowCountInput.value);
+
+            var tableBody = document.querySelector("#myTable tbody");
+            tableBody.innerHTML = '';
+
+            for (var i = 0; i < rowCount; i++) {
+                var row = tableBody.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                cell1.style.backgroundColor = "#e0f0ff";
+                cell2.style.backgroundColor = "#e0f0ff";
+                cell3.style.backgroundColor = "#e0f0ff";
+                cell4.style.backgroundColor = "#e0f0ff";
+                var input11 = document.createElement("input");
+                input11.type = "text";
+                input11.classList.add("input11-width");
+                input11.id = "input11_" + i;
+                cell1.appendChild(input11);
+
+                var input1 = document.createElement("input");
+                input1.type = "text";
+                input1.classList.add("input1-width");
+                input1.id = "input1_" + i;
+                cell2.appendChild(input1);
+
+                var input2 = document.createElement("input");
+                input2.type = "text";
+                input2.classList.add("input2-width");
+                input2.id = "input2_" + i;
+                cell3.appendChild(input2);
+
+                var femaleRadio = document.createElement("input");
+                femaleRadio.type = "radio";
+                femaleRadio.name = "gender" + i;
+                femaleRadio.value = "female";
+                femaleRadio.id = "femaleRadio_" + i;
+                cell4.appendChild(femaleRadio);
+
+                var femaleLabel = document.createElement("label");
+                femaleLabel.innerHTML = "Female";
+                cell4.appendChild(femaleLabel);
+
+                var maleRadio = document.createElement("input");
+                maleRadio.type = "radio";
+                maleRadio.name = "gender" + i;
+                maleRadio.value = "male";
+                maleRadio.id = "maleRadio_" + i;
+                cell4.appendChild(maleRadio);
+
+                var maleLabel = document.createElement("label");
+                maleLabel.innerHTML = "Male";
+                cell4.appendChild(maleLabel);
+            }
+        }
+
+
+        addRows();
+
+        function countCheckedCheckboxes() {
+            var checkboxes = document.querySelectorAll('.article1 input[type="checkbox"]:checked');
+            return checkboxes.length;
+        }
+
+        function handleCheckboxChange() {
+            var maxAllowed = parseInt(document.getElementById("sumTextField").value);
+            var checkedCount = countCheckedCheckboxes();
+            if (checkedCount > maxAllowed) {
+                alert("Only " + maxAllowed + " seats can be selected.");
+                this.checked = false;
+            } else {
+                updateInputFields();
+            }
+        }
+
+        function updateInputFields() {
+            var checkboxes = document.querySelectorAll('.article1 input[type="checkbox"]:checked');
+            var inputs = document.querySelectorAll('.article2 input[type="text"].input11-width');
+            var femaleRadios = document.querySelectorAll('.article2 input[type="radio"][value="female"]');
+            var maleRadios = document.querySelectorAll('.article2 input[type="radio"][value="male"]');
+
+
+            femaleRadios.forEach(function (femaleRadio) {
+                femaleRadio.checked = false;
+                var row = femaleRadio.closest('tr');
+                var maleRadio = row.querySelector('input[type="radio"][value="male"]');
+                if (maleRadio) {
+                    maleRadio.disabled = false;
+                }
+            });
+
+            inputs.forEach(function (input, index) {
+                var updatedValue = checkboxes[index] ? checkboxes[index].nextElementSibling.innerText : '';
+                input.value = updatedValue;
+
+
+                if (["13A", "14A", "15W", "18A", "19A", "20W"].includes(updatedValue)) {
+
+                    var correspondingFemaleRadio = femaleRadios[index];
+                    if (correspondingFemaleRadio) {
+                        correspondingFemaleRadio.checked = true;
+
+                        var row = correspondingFemaleRadio.closest('tr');
+                        var correspondingMaleRadio = row.querySelector('input[type="radio"][value="male"]');
+                        if (correspondingMaleRadio) {
+                            correspondingMaleRadio.disabled = true;
+                        }
+                    }
+                }
+            });
+        }
+
+
+        document.querySelectorAll('.article2 input[type="radio"][value="female"]').forEach(function (femaleRadio) {
+            femaleRadio.addEventListener('click', function () {
+                var row = this.closest('tr');
+                var maleRadio = row.querySelector('input[type="radio"][value="male"]');
+                if (this.checked && maleRadio) {
+                    maleRadio.disabled = true;
+                }
+            });
+        });
+
+
+        var checkboxes = document.querySelectorAll('.article1 input[type="checkbox"]');
+
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', handleCheckboxChange);
+        });
+
+
+        let doc = document.getElementById('pickup')
+        console.log(doc.value)
+        let spec1 = doc.value
+
+        let doc1 = document.getElementById('drop1')
+        console.log(doc1.value)
+        let spec2 = doc1.value
+
+        doc.addEventListener('keypress', function () {
+            console.log('enteres in ')
+            spec1 = this.value;
+            spec2 = this.value
+        })
+        idValue();
+        function idValue() {
+            console.log(spec1)
+            fetch('http://localhost:8080/addbus/getAdduser', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(res => {
+                    return res.json();
+                })
+
+                .then(data => {
+                    data.forEach(Addbus => {
+                        if (Addbus.start === spec1 && Addbus.end === spec2) {
+                            let hidden = document.getElementById('inputBox');
+                            hidden.value = Addbus.id;
+
+                            let hidden1 = document.getElementById('st');
+                            hidden1.value = Addbus.start_time;
+
+                            let hidden2 = document.getElementById('et');
+                            hidden2.value = Addbus.end_time;
+
+                        }
+                    });
+                });
+        }
+        const x = null;
+        function details() {
+            var eid = document.getElementById('eid').value;
+
+
+            fetch('http://localhost:8080/email/send-document/' + eid, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(eid),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    return response.text();
+                })
+                .then(data => {
+
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error during fetch request:', error);
+                    alert('An error occurred while processing your request. Please try again later.');
+                });
+
+
+            let mobileRegex = /^[7-9][0-9]{9}$/;
+            let emailRegex =
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,6}))$/;
+            // let aahar = /^\d{4}\s\d{4}\s\d{4}$/;
+            let email = document.getElementById('eid').value;
+            let mn = document.getElementById('mn').value;
+            // let ac = document.getElementById('ac').value;
+
+            let error = {
+
+            }
+
+
+
+
+            let details = []
+
+            let rowCount = parseInt(document.getElementById("sumTextField").value);
+            for (let i = 0; i < rowCount; i++) {
+
+                let naga = {}
+                naga.sn = document.getElementById("input11_" + i).value;
+                naga.passengers = document.getElementById("input1_" + i).value;
+                naga.age = document.getElementById("input2_" + i).value + ',';
+
+                let femaleRadio = document.getElementById("femaleRadio_" + i);
+                let maleRadio = document.getElementById("maleRadio_" + i);
+                let genderValue = '';
+                if (femaleRadio.checked) {
+                    genderValue = femaleRadio.value;
+                } else if (maleRadio.checked) {
+                    genderValue = maleRadio.value;
+                }
+                naga.gen = genderValue;
+
+                naga.date1 = document.getElementById('date1').value;
+                naga.pickup = document.getElementById('pickup').value;
+                naga.st = document.getElementById('st').value;
+                naga.uname = document.getElementById('uname').value;
+                naga.drop1 = document.getElementById('drop1').value;
+                naga.et = document.getElementById('et').value;
+                naga.inputBox = document.getElementById('inputBox').value;
+                naga.ac = document.getElementById('ac').value;
+                naga.mn = document.getElementById('mn').value;
+                naga.eid = document.getElementById('eid').value;
+                naga.sumTextField = document.getElementById('sumTextField').value;
+
+                if (!emailRegex.test(email)) {
+                    alert("Give the Valid MailId")
+                }
+
+                if (!mobileRegex.test(mn)) {
+                    alert("Give the Valid Mobile Number")
+
+                }
+
+                // if (!aahar.test(ac)) {
+                //     alert("Give the Valid Aadhar Number")
+
+                // }
+                details.push(naga)
+                console.log(naga)
+            }
+
+
+            details.forEach((val) => {
+                var de = {
+                    sn: val.sn,
+                    et: val.et,
+                    age: val.age,
+                    date11: val.date11,
+                    passengers: val.passengers,
+                    gen: val.gen,
+                    date1: val.date1,
+                    pickup: val.pickup,
+                    st: val.st,
+                    uname: val.uname,
+                    drop1: val.drop1,
+                    ac: val.ac,
+                    inputBox: val.inputBox,
+                    mn: val.mn,
+                    eid: val.eid,
+                    sumTextField: val.sumTextField
+                };
+
+
+
+
+
+                fetch('http://localhost:8080/details/detail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(de), // Assuming 'de' is your data object
+                })
+                    .then(response => {
+                        console.log('Response status:', response.status);
+                        if (response.ok) {
+                            return response.text(); // Return a promise that resolves with the response text
+                        } else {
+                            throw new Error('Network response was not ok.'); // Throw an error to trigger the catch block
+                        }
+                    })
+                    
+                    .then(data => {console.log(de);
+                        console.log('Response data:', data);
+                        if (data == 'Booking added successfully') {
+                            console.log("Success: Data submitted successfully.");
+                            // Get input values or data from the page
+                            let countValue = document.getElementById("inputBox").value;
+                            let countValue2 = document.getElementById("sumTextField").value;
+                            let countValue3 = document.getElementById("date1").value;
+                            let countValue4 = document.getElementById("uname").value;
+
+                            // Construct the destination URL with data
+                            let destinationURL = "payment.html?busid=" + encodeURIComponent(countValue) + "&noofseats=" + encodeURIComponent(countValue2) + "&date=" + encodeURIComponent(countValue3) + "&uname=" + encodeURIComponent(countValue4);
+
+                            console.log("Destination URL:", destinationURL);
+                            // Redirect to the destination URL
+                            window.location.href = destinationURL;
+                            // Show an alert message
+                            alert("Please check your email");
+                        } else {
+                            // Handle unexpected response (data is empty)
+                            console.error('Unexpected response:', data);
+                            alert('An error occurred while processing your request. Please try again later.');
+                        }
+                    })
+                    .catch(error => {
+                        // Handle fetch errors or errors thrown in the promise chain
+                        console.error('Error during fetch request:', error);
+                        alert('An error occurred while processing your request. Please try again later.');
+                    });
+            })
+
+        }
+
+        var checkboxes = document.querySelectorAll('.article1 input[type="checkbox"]');
+        checkboxes.forEach(function (checkbox) {
+            if (checkbox.checked) {
+                checkbox.disabled = true;
+            }
+        });
+        let d = document.getElementById('pickup');
+        let a1 = d.value;
+
+        let e = document.getElementById('drop1');
+        let a2 = e.value;
+
+        let f = document.getElementById('date1');
+        let a3 = f.value;
+
+        fetch('http://localhost:8080/slot/getbook', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+
+                data.forEach(Details => {
+
+                    if (Details.date11 === a3 && Details.from1 === a1 && Details.to1 === a2 && Details.booked === 1) {
+                        console.log(Details.booked === 1);
+                        console.log(Details);
+                        let seatNumber = Details.seatnumbers.split(',');
+                        seatNumber.forEach(seat => {
+                            console.log(seat)
+
+                            let checkbox = document.getElementById(seatNumber);
+                            if (checkbox) {
+
+                                checkbox.disabled = true;
+                                checkbox.parentNode.style.backgroundColor = 'blue';
+                            }
+                        });
+                    }
+
+
+                });
+            })
+
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+
+    </script>
+</body>
+
+</html>

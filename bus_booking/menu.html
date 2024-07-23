@@ -1,0 +1,110 @@
+
+<html>
+    <head>
+    <style>
+        .nav-link{
+            color: white;
+            font-size:18px;
+            font-family:calibri;
+            padding:20px;
+            margin:2px;
+        }
+        .nav-link:hover{
+            color: #e9eeea;
+        }
+        .nav-link a{
+            padding: 10px;
+        }
+        .dash {
+            height: 100%;
+            width: 17%;
+            float: left;
+            background-color:#374047;
+            padding-top: 75px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        nav {
+            background-color:#94bbe9;
+            margin-left: 230px;
+            width: 83%;
+            height: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .nav-link.active{
+            background-color:white !important;
+            color: #fecd66 !important;
+            text-decoration:none;
+        } 
+        h3{
+            padding:20px 0px;
+            position:absolute;
+            margin-left:10px;
+        }  
+        .cover{
+            COLOR:WHITE;
+            background-color:#374047;
+            margin-left:232px;
+            width: 83%;
+            height: 180px;
+        }
+        .square{
+            width:250px;
+            height:130px;
+            margin:130px 330px;
+            position:absolute;
+            background-color:#94bbe9;
+            border-radius:5px;
+        }
+        .num{
+            font-size:40px;
+            color:white;
+            font-weight:bold;
+            padding-left:30px;
+            padding-top:5px;
+        }
+        a{
+            text-decoration: none;
+            display: inline-block;
+            
+        }
+        
+        </style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    </head>
+    <body>
+        
+        <div class="dash">
+            <hr style="width:90%">
+            <a href="#" class="nav-link"> <i class="material-icons" style="vertical-align: middle; ">dashboard</i>       Dashboard</a>
+            <a href="adminview.html" id="useradmin" class="nav-link"><i class="material-icons" style="vertical-align: middle; "  >person</i>         Users</a>
+            <a href="busdetails.html" class="nav-link"><i class="material-icons" style="vertical-align: middle; ">directions_bus</i>         Buses</a>
+            <a href="emergency.html" class="nav-link" id='profile'><i class="material-icons" style="vertical-align: middle; "><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M200-160v-80h64l79-263q8-26 29.5-41.5T420-560h120q26 0 47.5 15.5T617-503l79 263h64v80H200Zm148-80h264l-72-240H420l-72 240Zm92-400v-200h80v200h-80Zm238 99-57-57 142-141 56 56-141 142Zm42 181v-80h200v80H720ZM282-541 141-683l56-56 142 141-57 57ZM40-360v-80h200v80H40Zm440 120Z"/></svg> </i>         Emergency</a>
+            <a href="addslot.html" class="nav-link" id="slot"><i class='material-icons' style="vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M340-720q-33 0-56.5-23.5T260-800q0-33 23.5-56.5T340-880q33 0 56.5 23.5T420-800q0 33-23.5 56.5T340-720Zm220 560H302q-33 0-60.5-23.5T207-240l-87-440h82l88 440h270v80Zm220 80L664-280H386q-29 0-50.5-17.5T308-344l-44-214q-11-48 22.5-85t81.5-37q35 0 63.5 21t36.5 57l44 202h130q21 0 39 11t29 29l140 240-70 40Z"/></svg></i>Slot</a>
+
+            
+        </div>
+        <nav><i class="material-icons" style="vertical-align: middle; color:white; padding:8px;">menu</i>
+            <i class="material-icons" style="vertical-align: middle; color:white; padding:8px; float:right;">notifications</i>
+            <i class="material-icons" style="vertical-align: middle; color:white; padding:8px; float:right;">chat_bubble</i>
+        </nav>
+        <!-- <div class="square">
+            <i class="material-icons" style="color:white;font-size:70px;float:right">badge</i>
+            <div style="color:white;font-size:30px;font-weight:bold;margin-left:20px;">Users</div>
+            <label id="usercount"></label>
+            
+        </div>
+        <div class="square" style=" margin:130px 630px;">
+            <i class="material-icons" style="color:white;font-size:70px;float:right">directions_bus</i>
+            <div style="color:white;font-size:30px;font-weight:bold;margin-left:20px;">Buses</div>
+        </div> -->
+        
+        <div class="cover">
+            <h3>Dashboard</h3>
+           
+        </div>
+    </body>
+    
+</html>
